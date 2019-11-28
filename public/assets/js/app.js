@@ -1,3 +1,5 @@
+// Hebrew app
+
 const navbar = document.querySelector('.navbar').children
 for (let i=0; i < navbar.length; i++) {
   navbar[i].addEventListener('click',(e) => {
