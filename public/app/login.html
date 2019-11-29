@@ -9,8 +9,8 @@
     <link rel="manifest" href="assets/ico/site.webmanifest">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <title>Hebraiske bøyninger</title>
-    <link type="text/css" rel="stylesheet" href="assets/css/main.css">
+    <title>Hebraisk - login</title>
+    <link type="text/css" rel="stylesheet" href="../assets/css/main.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
@@ -20,7 +20,23 @@
       </nav>
     </header>
 
-    
+    <section class="login-modal grid modal center-items">
+      <form class="login-form form grid c1">
+        <div class="login-close-button material-icons close-btn">close</div>
+        <h2>Login</h2>
+        <div class="input-field">
+          <input type="email" id="login-mail" required>
+          <label for="login-mail">epost</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="login-passwd" required>
+          <label for="login-passwd">passord</label>
+        </div>
+        <button class="btn">logg inn</button>
+      </form>
+    </section>
+
+
 
     <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-firestore.js"></script>
@@ -44,7 +60,7 @@
       const db = firebase.firestore();
 
     </script>
-    <script type="text/javascript" src="assets/js/app.js"></script>
-    <script type="text/javascript" src="assets/js/auth.js"></script>
+    <script type="text/javascript" src="../assets/js/app.js"></script>
+    <script type="text/javascript" src="../assets/js/auth.js"></script>
   </body>
 </html>

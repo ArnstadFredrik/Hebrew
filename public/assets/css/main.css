@@ -38,6 +38,7 @@ body {
 h1, h3, h2 {
   text-transform: uppercase;
   margin: 0;
+  font-family: "Avenir";
 }
 
 h1 {
@@ -282,6 +283,64 @@ header span.selected {
 
 section {
   margin-bottom: 15vh;
+}
+
+.modal {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.btn,
+.close-btn {
+  background: #732f2b;
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.btn {
+  font-family: "Avenir";
+  border: none;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.form {
+  position: relative;
+  max-width: 1000px;
+  min-width: 600px;
+  height: 400px;
+  background: white;
+}
+
+.form .input-field {
+  position: relative;
+}
+
+.form input {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 1.2rem;
+  font-family: "Avenir";
+}
+
+.form label {
+  text-transform: uppercase;
+  position: absolute;
+  font-family: "Avenir";
+  font-size: 0.8rem;
+  color: #333;
+  top: -1.5vw;
+  left: 0vw;
 }
 
 .paradigm .item:nth-child(even) {

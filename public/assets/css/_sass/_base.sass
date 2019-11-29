@@ -16,6 +16,7 @@ h1,h3,h2
   text:
     transform: uppercase
   margin: 0
+  font-family: $font
 h1
   font-size: 4rem
 h2
@@ -152,6 +153,52 @@ header
 
 section
   margin-bottom: 15vh
+
+.modal
+  position: absolute
+  width: 100vw
+  height: 100vh
+  background: rgba(255,255,255,0.8)
+
+.btn,
+.close-btn
+  background: $mainOne
+  color: $containerColor
+  padding: 10px
+  box-sizing: border-box
+  font-size: 1.1rem
+  text-transform: uppercase
+.btn
+  font-family: $font
+  border: none
+
+.close-btn
+  position: absolute
+  top: 20px
+  right: 20px
+
+.form
+  position: relative
+  max-width: 1000px
+  min-width: 600px
+  height: 400px
+  background: $containerColor
+  .input-field
+    position: relative
+  input
+    width: 100%
+    padding: 20px
+    box-sizing: border-box
+    font-size: 1.2rem
+    font-family: $font
+  label
+    text-transform: uppercase
+    position: absolute
+    font-family: $font
+    font-size: 0.8rem
+    color: $fontColor
+    top: -1.5vw
+    left: 0vw
 
 .paradigm
   .item:nth-child(even)

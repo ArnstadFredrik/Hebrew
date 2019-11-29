@@ -1,15 +1,71 @@
 // Hebrew app
 
-const navbar = document.querySelector('.navbar').children
-for (let i=0; i < navbar.length; i++) {
-  navbar[i].addEventListener('click',(e) => {
-    e.preventDefault();
-    const href = navbar[i].classList;
-    resetSelected();
-    navbar[i].classList.add('selected');
-    toggleElement(href);
-    toggleMenu();
-  })
+function makeElement(name,...classes) {
+  let el = document.createElement(name)
+  for (cssClass of classes) {
+    el.classList.add(cssClass)
+  }
+  return el
+}
+
+function getPage() {
+  //get document id from DOM
+  const docId = document.querySelector('.selected').dataset.id;
+  // get document snapshot from DB
+  db.collection('pages').doc(docId).get().then(snap => {
+    // make HTML element for the conjugation
+    let section = makeElement('section','paradigm','grid','c2')
+    section.dataset.conjugation = snap.data().title
+    //for easy ref
+    form = snap.data();
+    let tmp = [];
+    for (part in form.forms) {
+      let element = makeElement('div',part,'section')
+      for (let i = 0; i < form.forms[part].pgn.length; i++) {
+        let f = form.forms[part].form
+        let p = form.forms[part].pgn
+        //make each pgn : form element
+        let div = makeElement('div','item','grid','c2','center-items');
+        div.innerHTML = `
+        <span class="pgn">${p[i]}</span>
+        <span class="form">${f[i]}</span>
+        `
+
+        element.appendChild(div);
+      }
+      // dont know how to sort query
+      // so sorting it manually
+      if (element.className.includes('sg')) {
+        tmp.unshift(element)
+      }
+      else {
+        tmp.push(element)
+      }
+
+      //apending elements in right order
+      for (i of tmp) {
+        section.appendChild(i)
+      }
+    }
+    // appends everything to the DOM
+    document.querySelector('body').appendChild(section)
+})
+}
+
+
+function navBar() {
+  const navbar = document.querySelector('.navbar').children
+  for (let i=0; i < navbar.length; i++) {
+    navbar[i].addEventListener('click',(e) => {
+      e.preventDefault();
+      const href = navbar[i].classList;
+      resetSelected();
+      navbar[i].classList.add('selected');
+      toggleElement(href);
+      toggleMenu();
+      getPage()
+    })
+  }
 }
 
 const toggleElement = (element) => {
@@ -64,6 +120,7 @@ function menuKey(e) {
     page.classList.add('selected');
     toggleElement(page.classList);
     toggleMenu();
+    getPage();
   }
 
   const numberOfMenuItems = document.querySelector('.navbar').children.length
